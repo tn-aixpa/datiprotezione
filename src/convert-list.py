@@ -8,13 +8,13 @@ def convert_list(context, list: mlrun.DataItem):
     data = list.as_df()
     data = data.to_dict(orient='records')
     for index, item in enumerate(data):
+        name = item['title_en']
+        context.logger.info(f"Converting {name} to parquet (link {item['link']})")
         try:
             gdf = geopandas.read_file(item['link'])
         except:
             context.logger.error(f"Error reading file: {item['link']}")
             continue
-        name = item['title_en']
-        context.logger.info(f"Converting {name} to parquet (link {item['link']})")
         # convert name to lower case and replace spaces with underscores
         name = name.lower().replace(" ", "_")
         gdf.to_parquet('./'+name+'.parquet')
