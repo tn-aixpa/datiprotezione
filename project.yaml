@@ -1,6 +1,7 @@
 kind: project
 metadata:
   name: datiprotezione
+  created: '2024-07-24T14:07:29.406000'
 spec:
   functions:
   - url: src/create-list.py
@@ -28,3 +29,5 @@ spec:
     commands: []
     requirements: []
   custom_packagers: []
+status:
+  state: online

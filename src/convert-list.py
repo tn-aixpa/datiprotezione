@@ -14,6 +14,7 @@ def convert_list(context, list: mlrun.DataItem):
             context.logger.error(f"Error reading file: {item['link']}")
             continue
         name = item['title_en']
+        context.logger.info(f"Converting {name} to parquet (link {item['link']})")
         # convert name to lower case and replace spaces with underscores
         name = name.lower().replace(" ", "_")
         gdf.to_parquet('./'+name+'.parquet')
