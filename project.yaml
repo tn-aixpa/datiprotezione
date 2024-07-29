@@ -1,0 +1,30 @@
+kind: project
+metadata:
+  name: datiprotezione
+spec:
+  functions:
+  - url: src/create-list.py
+    name: create-list
+    kind: job
+    image: mlrun/mlrun
+    handler: create_list
+    requirements:
+    - deep_translator
+    - geopandas
+  - url: src/convert-list.py
+    name: convert-list
+    kind: job
+    image: mlrun/mlrun
+    handler: convert_list
+    requirements:
+    - geopandas
+  workflows: []
+  artifacts: []
+  conda: ''
+  source: git://github.com/tn-aixpa/datiprotezione.git#refs/heads/main
+  origin_url: git://github.com/tn-aixpa/datiprotezione.git#refs/heads/main
+  desired_state: online
+  build:
+    commands: []
+    requirements: []
+  custom_packagers: []
