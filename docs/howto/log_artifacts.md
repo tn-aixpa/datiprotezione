@@ -25,8 +25,15 @@ func_convert = project.new_function(
 ```
 The function represents a Python operation and may be invoked directly locally or on the cluster. It will read the list of metadata and fetch the actual dataset using corresponding link. 
 
-3. Run the function
+3. Data Fetch
+
+Fetch the dataitem list created in first phase [Log metadata](./log_metadata.md)
 ```python
-run_convert = func_convert.run(action="job",inputs={},outputs={}, local_execution=False)
+di = project.get_dataitem('siat_trentino')
+```
+
+4. Run the function
+```python
+run_convert_list = func_convert.run(action="job",inputs={"list": di.key}, local_execution=False) 
 ```
 The dataset will be registered in side the project contexts as artifacts.
