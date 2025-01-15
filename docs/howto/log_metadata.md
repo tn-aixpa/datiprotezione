@@ -1,6 +1,6 @@
 # How to prepare data for logging
 
-To prepare the meta data, it is required to create list of dataset 'siat_trentino' in the project context 
+To prepare the metadata, it is required to fetch such information from online service and create a list of dataset 'siat_trentino' in the project context 
 
 1. Initialize the project
 
@@ -25,7 +25,7 @@ func = project.new_function(
 	requirements: ["deep_translator"]
 )
 ```
-The function represent a Python operation and may be invoked directly locally or on the cluster. The function will fetch the list of documents from online portal and register it as dataitem inside project.
+The function represents a Python operation and may be invoked directly locally or on the cluster. The function will fetch the list of documents from online service and register a metadata list as dataitem inside project.
 ```
 
-The resulting dataset will be registered as the project artifact in the datalake under the name ``siat_trentino``.
+The resulting metadata list will be registered as the project dataitem in the datalake under the name ``siat_trentino``.
