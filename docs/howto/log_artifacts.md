@@ -15,12 +15,13 @@ project = dh.get_or_create_project(PROJECT_NAME)
 Register the ``convert-list`` function in the project. It is required to update the 'code_src' url with github username and personal access token in the code cell below
 
 ```python
-func = project.new_function(
-    name="train", 
+func = proj.new_function(
+    name="create", 
     kind="python", 
     python_version="PYTHON3_10", 
-    code_src="git+https://<username>:<personal_access_token>@github.com/tn-aixpa/datiprotezione", 
-    handler="src.convert-list:convert_list"    
+    code_src="git+https://<username>:<access_token>@github.com/tn-aixpa/datiprotezione",
+    handler="src.create:create_list",
+	requirements=["deep_translator"]
 )
 ```
 The function represents a Python operation and may be invoked directly locally or on the cluster. It will read the list of metadata and fetch the actual dataset using corresponding link. The dataset will be registered in side the project contexts as artifacts.
