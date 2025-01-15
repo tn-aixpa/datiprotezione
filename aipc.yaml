@@ -1,0 +1,37 @@
+ai: NLP
+domain: PA
+usages: ./docs/usage.md
+kind: project
+howto:
+  - title: Log meta data
+    ref: ./docs/howto/log_metadata.md
+  - title: Log data artifact
+    ref: ./docs/howto/log_artifacts.md
+datasets:
+  - id: siat_trentino
+    name: meta data
+    kind: table
+operations:
+  - id: create_list
+    name: Create the meta data list
+    kind: job
+    implementation:
+      framework: aixpa
+      spec:
+        kind: python 
+        code_src: "git+https://github.com/tn-aixpa/datiprotezione"
+        handler: "src.create-list:create_list"
+        python_version: PYTHON3_10
+        requirements: ["deep_translator"]
+    outputs:
+      - siat_trentino
+  - id: convert list
+    name: Convert the data as artifact
+    kind: job
+    implementation:
+      framework: aixpa
+      spec:
+        kind: python 
+        code_src: "git+https://github.com/tn-aixpa/datiprotezione"
+        handler: "src.conver-list:convert_list"
+        python_version: PYTHON3_10

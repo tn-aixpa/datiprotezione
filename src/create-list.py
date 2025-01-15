@@ -3,7 +3,6 @@ import requests
 import pandas as pd
 from deep_translator import GoogleTranslator
 import json
-import mlrun
 
 # translation
 translator = GoogleTranslator(source='it', target='en')
@@ -34,8 +33,7 @@ def givemelink(x):
 
     return(rd.replace("||",""))
 
-@mlrun.handler()
-def create_list(context):
+def create_list(project): #context
     start = 1
     to = 20
     maxPageSize = 100
@@ -90,4 +88,4 @@ def create_list(context):
     
     data['title_en'] = data['defaultTitle'].apply(translate_text)
     
-    context.log_dataset("siat_trentino", df=data, index=False)
+    project.log_dataitem("siat_trentino", data=data, kind='table', index=False)
