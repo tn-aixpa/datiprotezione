@@ -23,4 +23,4 @@ func = project.new_function(
     handler="src.convert-list:convert_list"    
 )
 ```
-The function represent a Python operation and may be invoked directly locally or on the cluster. The artifacts will be registered in side the project contexts.
+The function represents a Python operation and may be invoked directly locally or on the cluster. It will read the list of metadata and fetch the actual dataset using corresponding link. The dataset will be registered in side the project contexts as artifacts.
