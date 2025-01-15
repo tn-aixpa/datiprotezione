@@ -24,4 +24,11 @@ func = proj.new_function(
 	requirements=["deep_translator"]
 )
 ```
-The function represents a Python operation and may be invoked directly locally or on the cluster. It will read the list of metadata and fetch the actual dataset using corresponding link. The dataset will be registered in side the project contexts as artifacts.
+The function represents a Python operation and may be invoked directly locally or on the cluster. It will read the list of metadata and fetch the actual dataset using corresponding link. 
+
+3. Run the function
+
+```python
+run_create_list = func.run(action="job",inputs={},outputs={}, local_execution=False)
+```
+The dataset will be registered in side the project contexts as artifacts.
