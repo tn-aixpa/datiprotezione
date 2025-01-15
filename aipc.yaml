@@ -35,3 +35,4 @@ operations:
         code_src: "git+https://github.com/tn-aixpa/datiprotezione"
         handler: "src.conver-list:convert_list"
         python_version: PYTHON3_10
+     outputs: artifacts []
