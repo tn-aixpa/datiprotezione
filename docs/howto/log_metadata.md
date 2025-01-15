@@ -15,17 +15,20 @@ project = dh.get_or_create_project(PROJECT_NAME)
 Register the ``create-list`` function in the project. It is required to update the 'code_src' url with github username and personal access token in the code cell below
 
 ```python
-func = project.new_function(
-    name="train", 
+func_create = project.new_function(
+    name="create", 
     kind="python", 
     python_version="PYTHON3_10", 
     code_src="git+https://<username>:<personal_access_token>@github.com/tn-aixpa/datiprotezione", 
-    handler: "src.create-list:create_list"
-	python_version: PYTHON3_10
-	requirements: ["deep_translator"]
+    handler="src.create-list:create_list",
+    requirements= ["deep_translator"]
 )
 ```
 The function represents a Python operation and may be invoked directly locally or on the cluster. The function will fetch the list of documents from online service and register a metadata list as dataitem inside project.
-```
 
+2. Run the function
+
+```python
+run_create_list = func_create.run(action="job",inputs={},outputs={}, local_execution=False)
+```
 The resulting metadata list will be registered as the project dataitem in the datalake under the name ``siat_trentino``.
