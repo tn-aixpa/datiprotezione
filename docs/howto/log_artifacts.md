@@ -1,4 +1,4 @@
-# Log aritfacs
+# Log aritfacts
 
 To log the artifacts, it is possible to use ``convert-list`` operation that performs conversion of dataset using the meta data (siat-trentino)
 
@@ -16,12 +16,11 @@ Register the ``convert-list`` function in the project. It is required to update 
 
 ```python
 func_convert = project.new_function(
-    name="create", 
+    name="convert", 
     kind="python", 
     python_version="PYTHON3_10", 
     code_src="git+https://<username>:<access_token>@github.com/tn-aixpa/datiprotezione",
-    handler="src.create-list:create_list",
-    requirements=["deep_translator"]
+    handler="src.convert-list:convert_list"
 )
 ```
 The function represents a Python operation and may be invoked directly locally or on the cluster. It will read the list of metadata and fetch the actual dataset using corresponding link. 
